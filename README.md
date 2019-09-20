@@ -6,9 +6,9 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.org/edgararuiz/rscontracts.svg?branch=master)](https://travis-ci.org/edgararuiz/rscontracts)
+status](https://travis-ci.org/edgararuiz/rscontract.svg?branch=master)](https://travis-ci.org/edgararuiz/rscontract)
 [![Codecov test
-coverage](https://codecov.io/gh/edgararuiz/rscontracts/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontracts?branch=master)
+coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontract?branch=master)
 <!-- badges: end -->
 
 Provides a generic implementation of the RStudio Connection Contract to
@@ -23,7 +23,7 @@ You can install the development version from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("edgararuiz/rscontracts")
+remotes::install_github("edgararuiz/rscontract")
 ```
 
 ## Example
