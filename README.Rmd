@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rscontract
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/edgararuiz/rscontracts.svg?branch=master)](https://travis-ci.org/edgararuiz/rscontracts)
+[![Codecov test coverage](https://codecov.io/gh/edgararuiz/rscontracts/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontracts?branch=master)
+<!-- badges: end -->
+
+Provides a generic implementation of the RStudio Connection Contract to make it easier for database connections, and other type of connections, opened via R packages integrate with the Connections Pane inside the RStudio IDE.
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("edgararuiz/rscontracts")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(rscontract)
+
+con <- rscontract_open(rscontract_spec())
+
+rscontract_update(con)
+
+rscontract_close(con)
+```
