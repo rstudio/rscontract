@@ -1,4 +1,4 @@
 library(testthat)
-library(rscontracts)
+library(rscontract)
 
 test_check("connections")
