@@ -20,3 +20,12 @@ rscontract_open.rscontract_spec <- function(x) {
   rs_contract <- as_rscontract(x)
   rscontract_open(rs_contract)
 }
+
+open_connection_contract <- function(spec) {
+  observer <- getOption("connectionObserver")
+  if (is.null(observer)) {
+    return(invisible(NULL))
+  }
+  connection_opened <- function(...) observer$connectionOpened(...)
+  do.call("connection_opened", spec)
+}

@@ -1,0 +1,20 @@
+name:
+  code: toupper("my_title")
+type:
+  code: tolower("TYPE")
+host: host
+connect_script: Place connection code here
+disconnect_code:  function() rscontract_close("host", "type")
+preview_code: function(table, view, ...) c(table, view)
+catalog_list:
+  catalogs:
+    name: my_catalog
+    type: catalog
+    schemas:
+      - name: my_schema1
+        type: schema
+        tables:
+          - name: my_view1
+            type: view
+            fields:
+              code: list(list(name = "ext_function", type = "int"))

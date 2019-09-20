@@ -14,5 +14,5 @@ rscontract_update <- function(host = "", type = "", hint = "") {
   if (is.null(observer)) {
     return(invisible(NULL))
   }
-  observer$connectionUpdated(type = type,host = host,hint = hint)
+  observer$connectionUpdated(type = type, host = host, hint = hint)
 }

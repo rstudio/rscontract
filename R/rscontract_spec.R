@@ -1,37 +1,3 @@
-#' Mirrors the RStudio IDE connection contract arguments
-#' @param type Type of the connection.
-#' @param host Name of the host
-#' @param icon Path to the connection's icon. Defaults to NULL.
-#' @param displayName The connection's name.
-#' @param connectCode The text of the connection code.
-#' @param disconnect Function to use to disconnect. Default to function(){}.
-#' @param previewObject Function to run when the preview table icon is clicked on. Default to function(){}.
-#' @param listObjectTypes Function that provides the structure of the connection.
-#' The default function will work properly, it is going to be rare when it needs to be changed.
-#' @param listObjects Function to run to get the catalogs, schema, tables or views based what has been
-#' expanded on. Default to function(){}.
-#' @param listColumns Funciton to run that pull the field information. Default to function(){}.
-#' @param actions Additional buttons to add to the connection pane. Defaults to NULL.
-#' @param connectionObject The connection object. Default to NULL.
-#' @export
-rscontract_ide <- function(
-  connectionObject = NULL,
-  type = "",
-  host = "",
-  icon = NULL,
-  displayName = "",
-  connectCode = "",
-  disconnect = function(){},
-  previewObject = function(){},
-  listObjectTypes = default_types(),
-  listObjects = function(){},
-  listColumns = function(){},
-  actions = NULL
-){
-  a <- as.list(environment())
-  structure(as.list(a), class = "rscontract_ide")
-}
-
 #' A flexible API that can be converted to an RStudio Connection Contract
 #' @param type Type of the connection.
 #' @param host Name of the host
@@ -50,20 +16,19 @@ rscontract_ide <- function(
 #' @param connection_object The connection object. Default to NULL.
 #' @export
 rscontract_spec <- function(
-  connection_object = NULL,
-  type = "spec_type",
-  host = "spec_host",
-  icon = NULL,
-  name = "",
-  connect_script = "library(connections)\n[Place your code here]",
-  disconnect_code = "function() {}", # Enchance to use connection_close()
-  preview_code = "function(){}",
-  catalog_list = "sample_catalog()",
-  object_types = "default_types()",
-  object_list = NULL,
-  object_columns = NULL,
-  actions = NULL
-  ) {
+                            connection_object = NULL,
+                            type = "spec_type",
+                            host = "spec_host",
+                            icon = NULL,
+                            name = "",
+                            connect_script = "library(connections)\n[Place your code here]",
+                            disconnect_code = "function() rscontract_close('spec_host', 'spec_type')", # Enchance to use connection_close()
+                            preview_code = "function(){}",
+                            catalog_list = "sample_catalog()",
+                            object_types = "default_types()",
+                            object_list = NULL,
+                            object_columns = NULL,
+                            actions = NULL) {
   a <- as.list(environment())
   structure(as.list(a), class = "rscontract_spec")
 }
@@ -71,17 +36,17 @@ rscontract_spec <- function(
 
 spec_list_objects <- function(x) {
   function(catalog = NULL, schema = NULL, spec = x, ...) {
-      if (is.null(catalog)) {
-        return(get_object(spec, "catalogs")$data)
-      }
-      if (is.null(schema)) {
-        ctls <- get_object(spec, "catalogs", catalog)
-        return(get_object(ctls, "schemas")$data)
-      }
-      ctls <- get_object(spec, "catalogs", catalog)
-      schs <- get_object(ctls, "schemas", schema)
-      return(get_object(schs, "tables")$data)
+    if (is.null(catalog)) {
+      return(get_object(spec, "catalogs")$data)
     }
+    if (is.null(schema)) {
+      ctls <- get_object(spec, "catalogs", catalog)
+      return(get_object(ctls, "schemas")$data)
+    }
+    ctls <- get_object(spec, "catalogs", catalog)
+    schs <- get_object(ctls, "schemas", schema)
+    return(get_object(schs, "tables")$data)
+  }
 }
 
 spec_list_columns <- function(x) {
@@ -94,17 +59,8 @@ spec_list_columns <- function(x) {
   }
 }
 
-open_connection_contract <- function(spec) {
-  observer <- getOption("connectionObserver")
-  if (is.null(observer)) {
-    return(invisible(NULL))
-  }
-  connection_opened <- function(...) observer$connectionOpened(...)
-  do.call("connection_opened", spec)
-}
-
 default_types <- function() {
-  function(){
+  function() {
     list(catalog = list(
       contains =
         list(schema = list(
@@ -112,34 +68,10 @@ default_types <- function() {
             list(
               table = list(contains = "data"),
               view = list(contains = "data")
-            ))
-        ))
-    )
-  }
-}
-
-sample_catalog <- function() {
-  list(
-    catalogs = list(
-      name = "Database",
-      type = "catalog",
-      schemas = list(
-        name = "Schema",
-        type = "schema",
-        tables = list(
-          name = "table1",
-          type = "table",
-          fields = list(
-            list(
-              name = "field1",
-              type = "chr"
-            ),
-            list(
-              name = "field2",
-              type = "int"
-            ))
+            )
         ))
     ))
+  }
 }
 
 eval_list <- function(entry) {

@@ -16,11 +16,21 @@ knitr::opts_chunk$set(
 # rscontract
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/edgararuiz/rscontract.svg?branch=master)](https://travis-ci.org/edgararuiz/rscontract)
 [![Codecov test coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontract?branch=master)
 <!-- badges: end -->
 
-Provides a generic implementation of the RStudio Connection Contract to make it easier for database connections, and other type of connections, opened via R packages integrate with the Connections Pane inside the RStudio IDE.
+It is main goal is make it easier for other R packages or R projects to integrate with the RStudio Connections Contract.  It provides two levels to integrate with the Connections pane:
+
+1. `rscontract_spec()` (higher) - A function that enables the user pass a hierarchical list object to describe the structure of the connection (catalog/schema/table).  It is design in a way that the defaults open a very simple connection without changing any arguments.  The idea is to allow you to easily iterate through small argument changes as you are learning how it works. 
+1. `rscontract_ide()` (lower) - The arguments of this function matches one-to-one with the expected entries needed to open a Connection pane. 
+
+There are three functions that actually interact with the RStudio IDE:
+
+1. `rscontract_open()`  - Opens the Connection pane
+1. `rscontract_update()` - Refreshes the Connections pane
+1. `rscontract_close()` - Closes the Connections pane
 
 ## Installation
 
@@ -30,16 +40,131 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("remotes")
 remotes::install_github("edgararuiz/rscontract")
 ```
-## Example
 
-This is a basic example which shows you how to solve a common problem:
+## Basic example
+
+The stock output of `rscontract_spec()` is loaded into a variable `spec`.  This way it is possible to display its contents before using it to open a new connection.
+
+```{r setup}
+library(rscontract)
+```
+
+
+```{r}
+library(rscontract)
+spec <- rscontract_spec()
+str(spec)
+```
+
+The connection can now be opened with `spec`.
+
+```{r}
+rscontract_open(spec)
+```
+
+Notice above the values of the `type` and `host` entries inside `spec`. Those are the two pieces of information needed by RStudio to identify the connection that needs to be updated, or closed. 
+
+```{r}
+rscontract_update("spec_host", "spec_type")
+```
+
+After closing the connection, the content from the `connect_script` variable can be seen. 
 
 ```{r example}
-library(rscontract)
-
-con <- rscontract_open(rscontract_spec())
-
-rscontract_update(con)
-
-rscontract_close(con)
+rscontract_close("spec_host", "spec_type")
 ```
+
+## Modified spec
+
+```{r}
+library(rscontract)
+spec <- rscontract_spec(
+  type = "my_type",
+  host = "my_host", 
+  icon = system.file("images", "rstudio-icon.png", package = "rscontract"),
+  name = "Modified Name",
+  connect_script = "[This is my connection code]",
+  disconnect_code = "function() rscontract_close('my_host', 'my_type')",
+  preview_code = "function(catalog, schema, table, limit) data.frame(catalog, schema, table, limit)"
+)
+str(spec)
+```
+
+```{r}
+rscontract_open(spec)
+```
+
+## Action buttons
+
+```{r}
+spec$actions <- list(
+  "Button 1" = list(
+    icon = system.file("images", "rstudio-icon.png", package = "rscontract"),
+    callback = function() print("hello")
+  )
+)
+
+rscontract_open(spec)
+```
+
+```{r}
+spec_function <- function(x, message) {
+  x$actions <- list(
+  "Button 1" = list(
+    icon = system.file("images", "rstudio-icon.png", package = "rscontract"),
+    callback = function() print(message)
+  ))
+  x
+}
+
+rscontract_open(spec_function(spec, "test"))
+```
+
+
+```{r}
+rscontract_close("my_host", "my_type")
+```
+
+## Catalog structure
+
+```{r}
+str(sample_catalog())
+```
+
+```{r}
+my_cat <- sample_catalog()
+my_cat$catalogs$schemas$tables$fields[[3]] <- list(name = "test", type = "int")
+spec <- rscontract_spec()
+spec$catalog_list <- my_cat
+str(spec)
+rscontract_open(spec)
+```
+
+
+## From a file
+
+```{r}
+contract_file <- system.file("specs", "simple.yml", package = "rscontract")
+contract <- yaml::read_yaml(contract_file)
+str(contract)
+```
+
+```{r}
+spec <- as_rscontract(contract)
+rscontract_open(spec)
+```
+
+```{r}
+#contract_file <- system.file("specs", "full.yml", package = "rscontract")
+contract_file <- "inst/specs/full.yml"
+contract <- yaml::read_yaml(contract_file)
+str(contract)
+```
+
+```{r}
+my_fields <- function() list(name = "ext_function", type = "int")
+spec <- as_rscontract(contract)
+rscontract_open(spec)
+```
+
+

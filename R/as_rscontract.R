@@ -9,6 +9,21 @@ as_rscontract <- function(x) {
 
 #' @export
 as_rscontract.rscontract_spec <- function(x) {
+  to_contract(x)
+}
+
+#' @export
+as_rscontract.list <- function(x) {
+  spec <- rscontract_spec()
+  names_x <- names(x)
+  for(i in seq_along(x)) {
+    item <-  names_x[[i]]
+    spec[[item]] <- x[[item]]
+  }
+  to_contract(spec)
+}
+
+to_contract <- function(x) {
   rscontract_ide(
     connectionObject = eval_list(x$connection_object),
     type = eval_list(x$type),
@@ -28,6 +43,13 @@ as_rscontract.rscontract_spec <- function(x) {
       spec_list_columns(eval_char(x$catalog_list)),
       x$object_columns
     ),
-    actions = x$actions
+    actions = x$actions,
+    icon = x$icon
   )
 }
+
+
+
+
+
+

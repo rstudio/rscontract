@@ -1,5 +1,5 @@
 Package: rscontract
-Title: What the Package Does (One Line, Title Case)
+Title: Generic implementation of the RStudio Connections Contract
 Version: 0.0.0.9000
 Authors@R:
     person("Edgar", "Ruiz", email = "edgar@rstudio.com", role = c("aut", "cre"))

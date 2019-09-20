@@ -22,9 +22,9 @@ test_that("Support functions work", {
 })
 
 test_that("Other contract functions", {
- expect_silent(eval_list(list(code = "x <-  10")))
- expect_silent(eval_char("x <-  10"))
- expect_silent(eval_char(list()))
+  expect_silent(eval_list(list(code = "x <-  10")))
+  expect_silent(eval_char("x <-  10"))
+  expect_silent(eval_char(list()))
 })
 #
 test_that("get_element() function", {
@@ -32,7 +32,7 @@ test_that("get_element() function", {
   expect_equal(
     get_element(test_obj, "test", name = "test"),
     list(name = "test")
-    )
+  )
   test_obj <- list(test = list(list(name = "test")), list(name = "test2"))
   expect_equal(
     get_element(test_obj, "test", name = "test"),
