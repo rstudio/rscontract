@@ -18,25 +18,25 @@ test_that("Class functions return expected object types", {
 })
 
 test_that("Support functions work", {
-  expect_is(rscontract:::as_data_frame(x = "a"), "data.frame")
-  expect_is(rscontract:::first_non_empty("", ""), "NULL")
+  expect_is(as_data_frame(x = "a"), "data.frame")
+  expect_is(first_non_empty("", ""), "NULL")
 })
 
 test_that("Other contract functions", {
- expect_silent(rscontract:::eval_list(list(code = "x <-  10")))
- expect_silent(rscontract:::eval_char("x <-  10"))
- expect_silent(rscontract:::eval_char(list()))
+ expect_silent(eval_list(list(code = "x <-  10")))
+ expect_silent(eval_char("x <-  10"))
+ expect_silent(eval_char(list()))
 })
 #
 test_that("get_element() function", {
   test_obj <- list(test = list(name = "test"))
   expect_equal(
-    rscontract:::get_element(test_obj, "test", name = "test"),
+    get_element(test_obj, "test", name = "test"),
     list(name = "test")
     )
   test_obj <- list(test = list(list(name = "test")), list(name = "test2"))
   expect_equal(
-    rscontract:::get_element(test_obj, "test", name = "test"),
+    get_element(test_obj, "test", name = "test"),
     list(name = "test")
   )
 })
