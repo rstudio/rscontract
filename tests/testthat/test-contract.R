@@ -2,14 +2,13 @@ context("rscontract")
 
 test_that("Basic functions work", {
   con <- rscontract_open(rscontract_spec(name = "test"))
-  expect_is(rscontract_open(rscontract_spec()), "rscontract_ide")
-  expect_silent(rscontract_update(con))
-  expect_silent(rscontract_view(con))
-  expect_silent(rscontract_close(con))
+  expect_silent(rscontract_open(rscontract_spec()))
+  expect_silent(rscontract_update("spec_host", "spec_type"))
+  expect_silent(rscontract_close("spec_host", "spec_type"))
 })
 
 test_that("Class functions return expected object types", {
-  con <- rscontract_open(rscontract_spec(name = "test"))
+  con <- as_rscontract(rscontract_spec(name = "test"))
   expect_is(con$listObjects(), "data.frame")
   expect_is(con$listObjects(catalog = "Database"), "data.frame")
   expect_is(con$listObjects(catalog = "Database", schema = "Schema"), "data.frame")

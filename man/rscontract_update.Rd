@@ -4,10 +4,12 @@
 \alias{rscontract_update}
 \title{Refreshes a connection}
 \usage{
-rscontract_update(con, hint = "")
+rscontract_update(host = "", type = "", hint = "")
 }
 \arguments{
-\item{con}{Connection variable}
+\item{host}{Connection's Host name}
+
+\item{type}{The connection's type}
 
 \item{hint}{Optional argument passed to the Contract}
 }

@@ -1,6 +1,7 @@
 #' Refreshes a connection
 #'
-#' @param con Connection variable
+#' @param host Connection's Host name
+#' @param type The connection's type
 #' @param hint Optional argument passed to the Contract
 #'
 #' @examples
@@ -8,23 +9,10 @@
 #' rscontract_update(con)
 #' rscontract_close(con)
 #' @export
-rscontract_update <- function(con, hint = "") {
-  UseMethod("rscontract_update")
-}
-
-#' @export
-rscontract_update.rscontract_ide <- function(con, hint = "") {
-  update_connection(type = con$type, host = con$host)
-}
-
-update_connection <- function(host, type, hint = "") {
+rscontract_update <- function(host = "", type = "", hint = "") {
   observer <- getOption("connectionObserver")
   if (is.null(observer)) {
     return(invisible(NULL))
   }
-  observer$connectionUpdated(
-    type = type,
-    host = host,
-    hint = hint
-    )
+  observer$connectionUpdated(type = type,host = host,hint = hint)
 }

@@ -4,17 +4,15 @@
 \alias{rscontract_open}
 \title{Opens a connection}
 \usage{
-rscontract_open(..., open_pane = TRUE)
+rscontract_open(x)
 }
 \arguments{
-\item{...}{Passes arguments to wrapped connection function}
-
-\item{open_pane}{Signals for the RStudio Connections pane to open. Defaults to TRUE.}
+\item{x}{An rscontract_ide object, or an object coercible to an rscontract_ide}
 }
 \description{
 Opens a connection
 }
 \examples{
-con <- rscontract_open(rscontract_spec())
-rscontract_close(con)
+rscontract_open(rscontract_spec())
+rscontract_close("spec_host", "spec_type")
 }

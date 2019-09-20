@@ -4,21 +4,17 @@
 \alias{rscontract_close}
 \title{Close a connection}
 \usage{
-rscontract_close(con, host = "", type = "", leave_open = FALSE)
+rscontract_close(host = "", type = "")
 }
 \arguments{
-\item{con}{Connection variable}
-
 \item{host}{Host name of the connection. Optional, defaults to empty}
 
 \item{type}{Type of connection. Optional, defaults to empty}
-
-\item{leave_open}{Should the connection be left open. Defaults to FALSE}
 }
 \description{
 Close a connection
 }
 \examples{
-con <- rscontract_open(rscontract_spec())
-rscontract_close(con)
+rscontract_open(rscontract_spec())
+rscontract_close("spec_host", "spec_type")
 }

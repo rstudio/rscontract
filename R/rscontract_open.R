@@ -1,25 +1,22 @@
 #' Opens a connection
 #'
-#' @param ... Passes arguments to wrapped connection function
-#' @param open_pane Signals for the RStudio Connections pane to open. Defaults to TRUE.
+#' @param x An rscontract_ide object, or an object coercible to an rscontract_ide
 #'
 #' @examples
-#' con <- rscontract_open(rscontract_spec())
-#' rscontract_close(con)
+#' rscontract_open(rscontract_spec())
+#' rscontract_close("spec_host", "spec_type")
 #' @export
-rscontract_open <- function(..., open_pane = TRUE) {
+rscontract_open <- function(x) {
   UseMethod("rscontract_open")
 }
 
 #' @export
-rscontract_open.rscontract_ide <- function(con, ..., open_pane = TRUE) {
-  open_connection_contract(con)
-  con
+rscontract_open.rscontract_ide <- function(x) {
+  open_connection_contract(x)
 }
 
 #' @export
-rscontract_open.rscontract_spec <- function(con, ..., open_pane = TRUE) {
-  rs_contract <- as_rscontract(con)
+rscontract_open.rscontract_spec <- function(x) {
+  rs_contract <- as_rscontract(x)
   rscontract_open(rs_contract)
-  rs_contract
 }
