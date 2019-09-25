@@ -86,7 +86,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/edgararuiz/rscontract">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -101,7 +106,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerces object into an RStudio connection contract</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/edgararuiz/rscontract/blob/master/R/as_rscontract.R'><code>R/as_rscontract.R</code></a></small>
     <div class="hidden name"><code>as_rscontract.Rd</code></div>
     </div>
 
@@ -144,13 +149,13 @@
 #&gt; $disconnect
 #&gt; function () 
 #&gt; rscontract_close("spec_host", "spec_type")
-#&gt; &lt;environment: 0x55acd2a8be70&gt;
+#&gt; &lt;environment: 0x5568d36a55e0&gt;
 #&gt; 
 #&gt; $previewObject
 #&gt; function () 
 #&gt; {
 #&gt; }
-#&gt; &lt;environment: 0x55acd2a89968&gt;
+#&gt; &lt;environment: 0x5568d36a1d40&gt;
 #&gt; 
 #&gt; $listObjectTypes
 #&gt; function () 
@@ -158,8 +163,8 @@
 #&gt;     list(catalog = list(contains = list(schema = list(contains = list(table = list(contains = "data"), 
 #&gt;         view = list(contains = "data"))))))
 #&gt; }
-#&gt; &lt;bytecode: 0x55acd2a88960&gt;
-#&gt; &lt;environment: 0x55acd2a88e30&gt;
+#&gt; &lt;bytecode: 0x5568d36a0c58&gt;
+#&gt; &lt;environment: 0x5568d369dd08&gt;
 #&gt; 
 #&gt; $listObjects
 #&gt; function (catalog = NULL, schema = NULL, spec = x, ...) 
@@ -175,8 +180,8 @@
 #&gt;     schs &lt;- get_object(ctls, "schemas", schema)
 #&gt;     return(get_object(schs, "tables")$data)
 #&gt; }
-#&gt; &lt;bytecode: 0x55acd2a86ce0&gt;
-#&gt; &lt;environment: 0x55acd2a84180&gt;
+#&gt; &lt;bytecode: 0x5568d369bbb8&gt;
+#&gt; &lt;environment: 0x5568d369cec0&gt;
 #&gt; 
 #&gt; $listColumns
 #&gt; function (catalog = NULL, schema = NULL, table = NULL, view = NULL, 
@@ -188,8 +193,8 @@
 #&gt;     tbls &lt;- get_object(schs, "tables", table_object)
 #&gt;     get_object(tbls, "fields")$data
 #&gt; }
-#&gt; &lt;bytecode: 0x55acd2a81c08&gt;
-#&gt; &lt;environment: 0x55acd2a829d0&gt;
+#&gt; &lt;bytecode: 0x5568d369aa60&gt;
+#&gt; &lt;environment: 0x5568d3693e70&gt;
 #&gt; 
 #&gt; $actions
 #&gt; NULL
