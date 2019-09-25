@@ -12,3 +12,8 @@ as_rscontract(x)
 \description{
 Coerces object into an RStudio connection contract
 }
+\examples{
+
+as_rscontract(sample_catalog())
+
+}

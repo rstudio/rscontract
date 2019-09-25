@@ -40,3 +40,8 @@ expanded on. Default to function(){}.}
 \description{
 Mirrors the RStudio IDE connection contract arguments
 }
+\examples{
+
+str(rscontract_ide())
+
+}

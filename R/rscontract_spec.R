@@ -14,6 +14,11 @@
 #' @param object_columns Funciton to run that pull the field information. Default to NULL
 #' @param actions Additional buttons to add to the connection pane. Defaults to NULL.
 #' @param connection_object The connection object. Default to NULL.
+#'
+#' @examples
+#'
+#' str(rscontract_spec())
+#'
 #' @export
 rscontract_spec <- function(
                             connection_object = NULL,

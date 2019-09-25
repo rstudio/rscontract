@@ -1,5 +1,10 @@
 #' A example of how a connection hierarchy structure
 #' @export
+#'
+#' @examples
+#'
+#' str(sample_catalog())
+#'
 sample_catalog <- function() {
   list(
     catalogs = list(

@@ -44,3 +44,8 @@ expanded on. Defaults to NULL.}
 \description{
 A flexible API that can be converted to an RStudio Connection Contract
 }
+\examples{
+
+str(rscontract_spec())
+
+}

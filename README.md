@@ -13,6 +13,17 @@ status](https://travis-ci.org/edgararuiz/rscontract.svg?branch=master)](https://
 coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontract?branch=master)
 <!-- badges: end -->
 
+  - [Intro](#intro)
+  - [Functions](#functions)
+  - [Installation](#installation)
+  - [Examples](#examples)
+      - [Basic example](#basic-example)
+      - [Modified spec](#modified-spec)
+      - [Action buttons](#action-buttons)
+      - [From a file](#from-a-file)
+      - [R code as a value](#r-code-as-a-value)
+      - [Multiple schemas](#multiple-schemas)
+
 ## Intro
 
 Makes it easier for other R packages or R projects to integrate with the
@@ -66,7 +77,9 @@ You can install the development version from
 remotes::install_github("edgararuiz/rscontract")
 ```
 
-## Basic example
+## Examples
+
+### Basic example
 
 The stock output of `rscontract_spec()` is loaded into a variable
 `spec`. This way it is possible to display its contents before using it
@@ -135,7 +148,7 @@ rscontract_close("spec_host", "spec_type")
 
 <img src='man/figures/closed-1.png' width ='400px'/><br/><!--/html_preserve-->
 
-## Modified spec
+### Modified spec
 
 ``` r
 spec <- rscontract_spec(
@@ -155,7 +168,7 @@ rscontract_open(spec)
 
 <img src='man/figures/modified.png' width ='800px'/><br/><!--/html_preserve-->
 
-## Action buttons
+### Action buttons
 
 ``` r
 spec$actions <- list(
@@ -199,7 +212,18 @@ rscontract_open(spec_function(spec, "test"))
 rscontract_close("my_host", "my_type")
 ```
 
-## From a file
+### From a file
+
+A YAML file can be used to create the connection. The structure and name
+of each field has to match to what is expected by `rscontract`. The
+example below shows a basic example of the names and the expected type
+of input. By default, the content in the following fields will be
+evaluated is if it was R code:
+
+  - `disconnect_code`
+  - `preview_code`
+
+Here is an sample file included as part of the `rscontract` package:
 
 ``` yaml
 name: My Connection
@@ -225,6 +249,10 @@ catalog_list:
                 type: chr
 ```
 
+The key of using a YAML file, is to coerce it into a contract format
+using `as_rscontract()`. Then use `rscontract_open()` to start the
+connection.
+
 ``` r
 # Obtains the path to the sample YAML file
 contract_file <- system.file("specs", "simple.yml", package = "rscontract")
@@ -240,7 +268,10 @@ rscontract_open(spec)
 
 <img src='man/figures/yaml-1.png' width ='400px'/><br/><!--/html_preserve-->
 
-### Code inside the spec
+### R code as a value
+
+In order to pass R code instead of the value, then use a sub-entry
+called `code` for the entry you wish to modify.
 
 ``` yaml
 name:
@@ -275,3 +306,66 @@ rscontract_open(spec)
 <!--html_preserve-->
 
 <img src='man/figures/yaml-2.png' width ='400px'/><br/><!--/html_preserve-->
+
+### Multiple schemas
+
+Here is an example of a Contract with multiple Schemata:
+
+``` yaml
+name: displayName
+type: type
+host: host
+connect_script: Place connection code here
+disconnect_code:  function() rscontract_close("host", "type")
+preview_code: function(table, view, ...) c(table, view)
+catalog_list:
+  catalogs:
+    name: my_catalog
+    type: catalog
+    schemas:
+      - name: my_schema1
+        type: schema
+        tables:
+          - name: my_table1
+            type: table
+            fields:
+              - name: field1
+                type: nbr
+              - name: field2
+                type: chr
+          - name: my_view1
+            type: view
+            fields:
+              - name: field3
+                type: nbr
+              - name: field4
+                type: chr
+      - name: my_schema2
+        type: schema
+        tables:
+          - name: my_table4
+            type: table
+            fields:
+              - name: field5
+                type: nbr
+              - name: field6
+                type: chr
+          - name: my_view2
+            type: view
+            fields:
+              - name: field7
+                type: nbr
+              - name: field8
+                type: chr
+```
+
+``` r
+contract_file <- system.file("specs", "two-schemas.yml", package = "rscontract")
+contract <- yaml::read_yaml(contract_file)
+spec <- as_rscontract(contract)
+rscontract_open(spec)
+```
+
+<!--html_preserve-->
+
+<img src='man/figures/yaml-3.png' width ='400px'/><br/><!--/html_preserve-->

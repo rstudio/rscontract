@@ -2,6 +2,10 @@
 #'
 #' @param x Object that will be coerced
 #'
+#' @examples
+#'
+#' as_rscontract(sample_catalog())
+#'
 #' @export
 as_rscontract <- function(x) {
   UseMethod("as_rscontract")
