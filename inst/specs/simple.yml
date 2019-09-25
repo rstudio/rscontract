@@ -1,45 +1,21 @@
-name: displayName
-type: type
-host: host
-connect_script: Place connection code here
-disconnect_code:  function() rscontract_close("host", "type")
+name: My Connection
+type: my_connection
+host: hosted_here
+connect_script: my_function_connect(path = "myfile.txt")
+disconnect_code:  function() rscontract_close("hosted_here", "my_connection")
 preview_code: function(table, view, ...) c(table, view)
 catalog_list:
   catalogs:
     name: my_catalog
     type: catalog
     schemas:
-      - name: my_schema1
+      - name: my_schema
         type: schema
         tables:
-          - name: my_table1
+          - name: my_table
             type: table
             fields:
               - name: field1
                 type: nbr
               - name: field2
-                type: chr
-          - name: my_view1
-            type: view
-            fields:
-              - name: field3
-                type: nbr
-              - name: field4
-                type: chr
-      - name: my_schema2
-        type: schema
-        tables:
-          - name: my_table4
-            type: table
-            fields:
-              - name: field5
-                type: nbr
-              - name: field6
-                type: chr
-          - name: my_view2
-            type: view
-            fields:
-              - name: field7
-                type: nbr
-              - name: field8
                 type: chr

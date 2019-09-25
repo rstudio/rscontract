@@ -1,5 +1,8 @@
 ---
-output: github_document
+output:
+  github_document:
+    toc: true
+    toc_depth: 2
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -9,8 +12,14 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  warning = FALSE
 )
+
+add_figure <- function(path, width = 400) {
+  char_html <- paste0("<img src='", path,"' width ='", width,"px'/><br/>")
+  htmltools::HTML(char_html)
+}
 ```
 
 # rscontract
@@ -21,16 +30,26 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontract?branch=master)
 <!-- badges: end -->
 
-It is main goal is make it easier for other R packages or R projects to integrate with the RStudio Connections Contract.  It provides two levels to integrate with the Connections pane:
+## Intro
 
-1. `rscontract_spec()` (higher) - A function that enables the user pass a hierarchical list object to describe the structure of the connection (catalog/schema/table).  It is design in a way that the defaults open a very simple connection without changing any arguments.  The idea is to allow you to easily iterate through small argument changes as you are learning how it works. 
+Makes it easier for other R packages or R projects to integrate with the RStudio Connections Contract.  It provides several options to describe the structure of your connection.  One of the options provided by `rscontract` is to use a YAML file that can contain the structure of the connection, and easily convert that into a proper RStudio Connections contract with a couple of lines of code: 
+
+`r add_figure("man/figures/yamltocontract.png", 1000)`
+
+## Functions
+
+It provides two levels of integration abstraction with the Connections pane:
+
+1. `rscontract_spec()` (higher) - Enables the user to pass a hierarchical list to describe the structure of the connection (catalog/schema/table).  The defaults are setup so you can open a very simple connection without changing any arguments.  The idea is to allow you to easily iterate through small argument changes as you are learning how the Connection pane works. 
 1. `rscontract_ide()` (lower) - The arguments of this function matches one-to-one with the expected entries needed to open a Connection pane. 
+
+The `as_rscontract()` function converts a variable into the same format that `rscontract_ide()` returns.  This makes it possible for objects such as `list`s returned by `yaml::read_yaml()` to work. 
 
 There are three functions that actually interact with the RStudio IDE:
 
-1. `rscontract_open()`  - Opens the Connection pane
-1. `rscontract_update()` - Refreshes the Connections pane
-1. `rscontract_close()` - Closes the Connections pane
+1. `rscontract_open()`  - Opens the Connection pane. It requires a properly formatted Connections pane provided by the `rscontract_spec()`, `rscontract_ide()`, or `as_rscontract()` functions.
+1. `rscontract_update()` - Refreshes the already opened Connections pane
+1. `rscontract_close()` - Closes the Connections pane.
 
 ## Installation
 
@@ -43,15 +62,17 @@ remotes::install_github("edgararuiz/rscontract")
 
 ## Basic example
 
-The stock output of `rscontract_spec()` is loaded into a variable `spec`.  This way it is possible to display its contents before using it to open a new connection.
+The stock output of `rscontract_spec()` is loaded into a variable `spec`.  This way it is possible to display its contents before using it to open a new connection.  
 
 ```{r setup}
 library(rscontract)
+library(data.tree)
 ```
 
 
 ```{r}
 library(rscontract)
+
 spec <- rscontract_spec()
 str(spec)
 ```
@@ -64,6 +85,10 @@ rscontract_open(spec)
 
 Notice above the values of the `type` and `host` entries inside `spec`. Those are the two pieces of information needed by RStudio to identify the connection that needs to be updated, or closed. 
 
+`r add_figure("man/figures/open-1.png", 400)`
+
+`rscontract` comes with a basic example accessible via the `sample_catalog()` function.  By default, `rscontract_spec()` uses `sample_catalog()` in the `object_types` entry to automatically give you working sample Connections pane.
+
 ```{r}
 rscontract_update("spec_host", "spec_type")
 ```
@@ -74,10 +99,11 @@ After closing the connection, the content from the `connect_script` variable can
 rscontract_close("spec_host", "spec_type")
 ```
 
+`r add_figure("man/figures/closed-1.png", 400)`
+
 ## Modified spec
 
 ```{r}
-library(rscontract)
 spec <- rscontract_spec(
   type = "my_type",
   host = "my_host", 
@@ -87,12 +113,11 @@ spec <- rscontract_spec(
   disconnect_code = "function() rscontract_close('my_host', 'my_type')",
   preview_code = "function(catalog, schema, table, limit) data.frame(catalog, schema, table, limit)"
 )
-str(spec)
-```
 
-```{r}
 rscontract_open(spec)
 ```
+
+`r add_figure("man/figures/modified.png", 800)`
 
 ## Action buttons
 
@@ -105,6 +130,13 @@ spec$actions <- list(
 )
 
 rscontract_open(spec)
+```
+
+`r add_figure("man/figures/button-1.png", 400)`
+
+```r
+#> rscontract_open(spec)
+#> [1] "hello"
 ```
 
 ```{r}
@@ -120,51 +152,84 @@ spec_function <- function(x, message) {
 rscontract_open(spec_function(spec, "test"))
 ```
 
+```r
+#> rscontract_open(spec_function(spec, "test"))
+#> [1] "test"
+```
 
 ```{r}
 rscontract_close("my_host", "my_type")
 ```
 
-## Catalog structure
-
-```{r}
-str(sample_catalog())
-```
-
-```{r}
-my_cat <- sample_catalog()
-my_cat$catalogs$schemas$tables$fields[[3]] <- list(name = "test", type = "int")
-spec <- rscontract_spec()
-spec$catalog_list <- my_cat
-str(spec)
-rscontract_open(spec)
-```
-
-
 ## From a file
 
+```yaml
+name: My Connection
+type: my_connection
+host: hosted_here
+connect_script: my_function_connect(path = "myfile.txt")
+disconnect_code:  function() rscontract_close("hosted_here", "my_connection")
+preview_code: function(table, view, ...) c(table, view)
+catalog_list:
+  catalogs:
+    name: my_catalog
+    type: catalog
+    schemas:
+      - name: my_schema
+        type: schema
+        tables:
+          - name: my_table
+            type: table
+            fields:
+              - name: field1
+                type: nbr
+              - name: field2
+                type: chr
+```
+
 ```{r}
+# Obtains the path to the sample YAML file
 contract_file <- system.file("specs", "simple.yml", package = "rscontract")
+# Reads the YAML file using the `yaml` package
 contract <- yaml::read_yaml(contract_file)
-str(contract)
+# Coerces list into a contract spec
+spec <- as_rscontract(contract)
+# Opens the connection
+rscontract_open(spec)
 ```
 
-```{r}
+`r add_figure("man/figures/yaml-1.png", 400)`
+
+### Code inside the spec
+
+```yaml
+name:
+  code: toupper("my_title")
+type:
+  code: tolower("TYPE")
+host: host
+connect_script: Place connection code here
+disconnect_code:  function() rscontract_close("host", "type")
+preview_code: function(table, view, ...) c(table, view)
+catalog_list:
+  catalogs:
+    name: my_catalog
+    type: catalog
+    schemas:
+      - name: my_schema1
+        type: schema
+        tables:
+          - name: my_view1
+            type: view
+            fields:
+              code: list(list(name = "ext_function", type = "int"))
+```
+
+```{r, eval = FALSE}
+contract_file <- system.file("specs", "full.yml", package = "rscontract")
+contract <- yaml::read_yaml(contract_file)
 spec <- as_rscontract(contract)
 rscontract_open(spec)
 ```
 
-```{r}
-#contract_file <- system.file("specs", "full.yml", package = "rscontract")
-contract_file <- "inst/specs/full.yml"
-contract <- yaml::read_yaml(contract_file)
-str(contract)
-```
-
-```{r}
-my_fields <- function() list(name = "ext_function", type = "int")
-spec <- as_rscontract(contract)
-rscontract_open(spec)
-```
-
-
+`r add_figure("man/figures/yaml-2.png", 400)`
