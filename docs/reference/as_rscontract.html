@@ -116,17 +116,93 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Object that will be coerced</p>
-<p>as_rscontract(sample_catalog())</p></td>
+      <td><p>Object that will be coerced</p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>as_rscontract</span>(<span class='fu'><a href='sample_catalog.html'>sample_catalog</a></span>())</div><div class='output co'>#&gt; $connectionObject
+#&gt; NULL
+#&gt; 
+#&gt; $type
+#&gt; [1] "spec_type"
+#&gt; 
+#&gt; $host
+#&gt; [1] "spec_host"
+#&gt; 
+#&gt; $icon
+#&gt; NULL
+#&gt; 
+#&gt; $displayName
+#&gt; [1] ""
+#&gt; 
+#&gt; $connectCode
+#&gt; [1] "library(connections)\n[Place your code here]"
+#&gt; 
+#&gt; $disconnect
+#&gt; function () 
+#&gt; rscontract_close("spec_host", "spec_type")
+#&gt; &lt;environment: 0x55acd2a8be70&gt;
+#&gt; 
+#&gt; $previewObject
+#&gt; function () 
+#&gt; {
+#&gt; }
+#&gt; &lt;environment: 0x55acd2a89968&gt;
+#&gt; 
+#&gt; $listObjectTypes
+#&gt; function () 
+#&gt; {
+#&gt;     list(catalog = list(contains = list(schema = list(contains = list(table = list(contains = "data"), 
+#&gt;         view = list(contains = "data"))))))
+#&gt; }
+#&gt; &lt;bytecode: 0x55acd2a88960&gt;
+#&gt; &lt;environment: 0x55acd2a88e30&gt;
+#&gt; 
+#&gt; $listObjects
+#&gt; function (catalog = NULL, schema = NULL, spec = x, ...) 
+#&gt; {
+#&gt;     if (is.null(catalog)) {
+#&gt;         return(get_object(spec, "catalogs")$data)
+#&gt;     }
+#&gt;     if (is.null(schema)) {
+#&gt;         ctls &lt;- get_object(spec, "catalogs", catalog)
+#&gt;         return(get_object(ctls, "schemas")$data)
+#&gt;     }
+#&gt;     ctls &lt;- get_object(spec, "catalogs", catalog)
+#&gt;     schs &lt;- get_object(ctls, "schemas", schema)
+#&gt;     return(get_object(schs, "tables")$data)
+#&gt; }
+#&gt; &lt;bytecode: 0x55acd2a86ce0&gt;
+#&gt; &lt;environment: 0x55acd2a84180&gt;
+#&gt; 
+#&gt; $listColumns
+#&gt; function (catalog = NULL, schema = NULL, table = NULL, view = NULL, 
+#&gt;     spec = x, ...) 
+#&gt; {
+#&gt;     table_object &lt;- paste0(table, view)
+#&gt;     ctls &lt;- get_object(spec, "catalogs", catalog)
+#&gt;     schs &lt;- get_object(ctls, "schemas", schema)
+#&gt;     tbls &lt;- get_object(schs, "tables", table_object)
+#&gt;     get_object(tbls, "fields")$data
+#&gt; }
+#&gt; &lt;bytecode: 0x55acd2a81c08&gt;
+#&gt; &lt;environment: 0x55acd2a829d0&gt;
+#&gt; 
+#&gt; $actions
+#&gt; NULL
+#&gt; 
+#&gt; attr(,"class")
+#&gt; [1] "rscontract_ide"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

@@ -87,7 +87,6 @@ to open a new connection.
 
 ``` r
 library(rscontract)
-library(data.tree)
 ```
 
 ``` r
@@ -150,6 +149,10 @@ rscontract_close("spec_host", "spec_type")
 
 ### Modified spec
 
+To start creating your own connection setup, simply modify the arguments
+in `rscontract_spec()` that you wish to test. Here is an example of a
+few modifications that are possible to make:
+
 ``` r
 spec <- rscontract_spec(
   type = "my_type",
@@ -170,6 +173,12 @@ rscontract_open(spec)
 
 ### Action buttons
 
+The Connections pane also give you the ability to add custom buttons at
+the top of the pane. These can be setup to run a specific R instruction
+once clicked. To add them simply modify the `action` entry in the spec.
+In the example below, “hello” is sent to the R Console when ‘Button 1’
+is clicked.
+
 ``` r
 spec$actions <- list(
   "Button 1" = list(
@@ -189,6 +198,8 @@ rscontract_open(spec)
 #> rscontract_open(spec)
 #> [1] "hello"
 ```
+
+To add flexibility, wrap the list preparation inside a function:
 
 ``` r
 spec_function <- function(x, message) {
