@@ -11,7 +11,7 @@
 #' The default function will work properly, it is going to be rare when it needs to be changed.
 #' @param object_list Function to run to get the catalogs, schema, tables or views based what has been
 #' expanded on. Defaults to NULL.
-#' @param object_columns Funciton to run that pull the field information. Default to NULL
+#' @param object_columns Function to run that pull the field information. Default to NULL
 #' @param actions Additional buttons to add to the connection pane. Defaults to NULL.
 #' @param connection_object The connection object. Default to NULL.
 #'

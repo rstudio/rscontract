@@ -10,7 +10,7 @@
 #' The default function will work properly, it is going to be rare when it needs to be changed.
 #' @param listObjects Function to run to get the catalogs, schema, tables or views based what has been
 #' expanded on. Default to function(){}.
-#' @param listColumns Funciton to run that pull the field information. Default to function(){}.
+#' @param listColumns Function to run that pull the field information. Default to function(){}.
 #' @param actions Additional buttons to add to the connection pane. Defaults to NULL.
 #' @param connectionObject The connection object. Default to NULL.
 #' @examples

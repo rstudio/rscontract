@@ -33,7 +33,7 @@ The default function will work properly, it is going to be rare when it needs to
 \item{listObjects}{Function to run to get the catalogs, schema, tables or views based what has been
 expanded on. Default to function(){}.}
 
-\item{listColumns}{Funciton to run that pull the field information. Default to function(){}.}
+\item{listColumns}{Function to run that pull the field information. Default to function(){}.}
 
 \item{actions}{Additional buttons to add to the connection pane. Defaults to NULL.}
 }

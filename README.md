@@ -22,7 +22,7 @@ coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.
       - [Action buttons](#action-buttons)
       - [From a file](#from-a-file)
       - [R code as a value](#r-code-as-a-value)
-      - [Multiple schemas](#multiple-schemas)
+      - [More than one schema](#more-than-one-schema)
 
 ## Intro
 
@@ -315,7 +315,7 @@ rscontract_open(spec)
 
 <img src='man/figures/yaml-2.png' width ='400px'/><br/><!--/html_preserve-->
 
-### Multiple schemas
+### More than one schema
 
 Here is an example of a Contract with multiple Schemata:
 

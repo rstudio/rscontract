@@ -37,7 +37,7 @@ The default function will work properly, it is going to be rare when it needs to
 \item{object_list}{Function to run to get the catalogs, schema, tables or views based what has been
 expanded on. Defaults to NULL.}
 
-\item{object_columns}{Funciton to run that pull the field information. Default to NULL}
+\item{object_columns}{Function to run that pull the field information. Default to NULL}
 
 \item{actions}{Additional buttons to add to the connection pane. Defaults to NULL.}
 }
