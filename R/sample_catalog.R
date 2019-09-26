@@ -4,7 +4,6 @@
 #' @examples
 #'
 #' str(sample_catalog())
-#'
 sample_catalog <- function() {
   list(
     catalogs = list(

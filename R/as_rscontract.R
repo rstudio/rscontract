@@ -5,7 +5,6 @@
 #' @examples
 #'
 #' as_rscontract(sample_catalog())
-#'
 #' @export
 as_rscontract <- function(x) {
   UseMethod("as_rscontract")
@@ -20,8 +19,8 @@ as_rscontract.rscontract_spec <- function(x) {
 as_rscontract.list <- function(x) {
   spec <- rscontract_spec()
   names_x <- names(x)
-  for(i in seq_along(x)) {
-    item <-  names_x[[i]]
+  for (i in seq_along(x)) {
+    item <- names_x[[i]]
     spec[[item]] <- x[[item]]
   }
   to_contract(spec)
@@ -51,9 +50,3 @@ to_contract <- function(x) {
     icon = x$icon
   )
 }
-
-
-
-
-
-

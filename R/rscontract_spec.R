@@ -18,7 +18,6 @@
 #' @examples
 #'
 #' str(rscontract_spec())
-#'
 #' @export
 rscontract_spec <- function(
                             connection_object = NULL,

@@ -16,21 +16,20 @@
 #' @examples
 #'
 #' str(rscontract_ide())
-#'
 #' @export
 rscontract_ide <- function(
-  connectionObject = NULL,
-  type = "",
-  host = "",
-  icon = NULL,
-  displayName = "",
-  connectCode = "",
-  disconnect = function() {},
-  previewObject = function() {},
-  listObjectTypes = default_types(),
-  listObjects = function() {},
-  listColumns = function() {},
-  actions = NULL) {
+                           connectionObject = NULL,
+                           type = "",
+                           host = "",
+                           icon = NULL,
+                           displayName = "",
+                           connectCode = "",
+                           disconnect = function() {},
+                           previewObject = function() {},
+                           listObjectTypes = default_types(),
+                           listObjects = function() {},
+                           listColumns = function() {},
+                           actions = NULL) {
   a <- as.list(environment())
   structure(as.list(a), class = "rscontract_ide")
 }
