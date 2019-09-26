@@ -7,4 +7,7 @@
 
 0 errors | 0 warnings | 1 note
 
-## This is the package's first submission
+## Resubmission
+
+* Changed licence to GPL-3
+* Quotes software names

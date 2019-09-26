@@ -12,5 +12,4 @@ A example of how a connection hierarchy structure
 \examples{
 
 str(sample_catalog())
-
 }
