@@ -16,9 +16,21 @@ test_that("Class functions return expected object types", {
   expect_is(con$listObjectTypes(), "list")
 })
 
+test_that("List coercion return expected object types", {
+  test_list <- list(name = "testlist")
+  con <- as_rscontract(test_list)
+  expect_is(con$listObjects(), "data.frame")
+  expect_is(con$listObjects(catalog = "Database"), "data.frame")
+  expect_is(con$listObjects(catalog = "Database", schema = "Schema"), "data.frame")
+  expect_is(con$listColumns(catalog = "Database", schema = "Schema", table = "table1"), "data.frame")
+  expect_is(con$listObjectTypes(), "list")
+})
+
+
 test_that("Support functions work", {
   expect_is(as_data_frame(x = "a"), "data.frame")
   expect_is(first_non_empty("", ""), "NULL")
+  expect_equal(first_non_empty("", "", "a"), "a")
 })
 
 test_that("Other contract functions", {
