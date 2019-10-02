@@ -9,10 +9,16 @@ rscontract_open(x)
 \arguments{
 \item{x}{An rscontract_ide object, or an object coercible to an rscontract_ide}
 }
+\value{
+Returns a NULL object.  If using the RStudio IDE, it will attempt to open the
+connection, and set the identification using the `host` and `type` argument
+values
+}
 \description{
 Opens a connection
 }
 \examples{
 rscontract_open(rscontract_spec())
 rscontract_close("spec_host", "spec_type")
+
 }

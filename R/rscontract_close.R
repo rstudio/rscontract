@@ -5,6 +5,12 @@
 #' @examples
 #' rscontract_open(rscontract_spec())
 #' rscontract_close("spec_host", "spec_type")
+#'
+#' @return
+#'
+#' Returns a NULL object. If using the RStudio IDE, it will attempt to close the
+#' connection identified by the `host` and `type` arguments
+#'
 #' @export
 rscontract_close <- function(host = "", type = "") {
   observer <- getOption("connectionObserver")

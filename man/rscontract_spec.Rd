@@ -41,10 +41,14 @@ expanded on. Defaults to NULL.}
 
 \item{actions}{Additional buttons to add to the connection pane. Defaults to NULL.}
 }
+\value{
+Returns an `rscontract_spec` class object
+}
 \description{
 A flexible API that can be converted to an RStudio Connection Contract
 }
 \examples{
 
 str(rscontract_spec())
+
 }

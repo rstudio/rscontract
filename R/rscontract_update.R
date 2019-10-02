@@ -8,6 +8,12 @@
 #' con <- rscontract_open(rscontract_spec())
 #' rscontract_update(con)
 #' rscontract_close(con)
+#'
+#' @return
+#'
+#' Returns a NULL object. If using the RStudio IDE, it will attempt to refresh the
+#' connection identified by the `host` and `type` arguments
+#'
 #' @export
 rscontract_update <- function(host = "", type = "", hint = "") {
   observer <- getOption("connectionObserver")

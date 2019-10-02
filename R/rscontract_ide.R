@@ -1,4 +1,10 @@
 #' Mirrors the RStudio IDE connection contract arguments
+#'
+#' @description
+#'
+#' Creates an object that contains all of the necessary information to create a connection
+#' contract. This function if meant as a lower level integration with the connections pane.
+#'
 #' @param type Type of the connection.
 #' @param host Name of the host
 #' @param icon Path to the connection's icon. Defaults to NULL.
@@ -16,6 +22,11 @@
 #' @examples
 #'
 #' str(rscontract_ide())
+#'
+#' @return
+#'
+#' An `rs_contract_ide` class object
+#'
 #' @export
 rscontract_ide <- function(
                            connectionObject = NULL,

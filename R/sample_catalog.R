@@ -4,6 +4,12 @@
 #' @examples
 #'
 #' str(sample_catalog())
+#'
+#' @return
+#'
+#' A `list` object containing all of the needed information to open a very
+#' simple connection contract
+#'
 sample_catalog <- function() {
   list(
     catalogs = list(

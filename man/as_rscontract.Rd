@@ -9,10 +9,14 @@ as_rscontract(x)
 \arguments{
 \item{x}{Object that will be coerced}
 }
+\value{
+An `rs_contract_ide` class object
+}
 \description{
 Coerces object into an RStudio connection contract
 }
 \examples{
 
 as_rscontract(sample_catalog())
+
 }

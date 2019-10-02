@@ -5,6 +5,11 @@
 #' @examples
 #'
 #' as_rscontract(sample_catalog())
+#'
+#' @return
+#'
+#' An `rs_contract_ide` class object
+#'
 #' @export
 as_rscontract <- function(x) {
   UseMethod("as_rscontract")

@@ -5,6 +5,13 @@
 #' @examples
 #' rscontract_open(rscontract_spec())
 #' rscontract_close("spec_host", "spec_type")
+#'
+#' @return
+#'
+#' Returns a NULL object.  If using the RStudio IDE, it will attempt to open the
+#' connection, and set the identification using the `host` and `type` argument
+#' values
+#'
 #' @export
 rscontract_open <- function(x) {
   UseMethod("rscontract_open")

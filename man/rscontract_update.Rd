@@ -13,6 +13,10 @@ rscontract_update(host = "", type = "", hint = "")
 
 \item{hint}{Optional argument passed to the Contract}
 }
+\value{
+Returns a NULL object. If using the RStudio IDE, it will attempt to refresh the
+connection identified by the `host` and `type` arguments
+}
 \description{
 Refreshes a connection
 }
@@ -20,4 +24,5 @@ Refreshes a connection
 con <- rscontract_open(rscontract_spec())
 rscontract_update(con)
 rscontract_close(con)
+
 }

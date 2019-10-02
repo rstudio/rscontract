@@ -6,10 +6,15 @@
 \usage{
 sample_catalog()
 }
+\value{
+A `list` object containing all of the needed information to open a very
+simple connection contract
+}
 \description{
 A example of how a connection hierarchy structure
 }
 \examples{
 
 str(sample_catalog())
+
 }

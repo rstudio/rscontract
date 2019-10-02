@@ -1,11 +1,12 @@
 Package: rscontract
-Title: Generic implementation of the RStudio Connections Contract
+Title: Generic implementation of the 'RStudio' connections contract
 Version: 0.1.0
 Authors@R:
     person("Edgar", "Ruiz", email = "edgar@rstudio.com", role = c("aut", "cre"))
-Description: Provides a generic implementation of the 'RStudio' Connection Contract to 
+Description: Provides a generic implementation of the 'RStudio' connection contract to 
     make it easier for database connections, and other type of connections, opened 
-    via R packages integrate with the Connections Pane inside the 'RStudio' IDE.
+    via R packages integrate with the connections pane inside the 'RStudio' interactive
+    development environment (IDE).
 License: GPL-3
 Suggests:
     testthat (>= 2.1.0),

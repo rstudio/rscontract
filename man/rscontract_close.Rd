@@ -11,10 +11,15 @@ rscontract_close(host = "", type = "")
 
 \item{type}{Type of connection. Optional, defaults to empty}
 }
+\value{
+Returns a NULL object. If using the RStudio IDE, it will attempt to close the
+connection identified by the `host` and `type` arguments
+}
 \description{
 Close a connection
 }
 \examples{
 rscontract_open(rscontract_spec())
 rscontract_close("spec_host", "spec_type")
+
 }

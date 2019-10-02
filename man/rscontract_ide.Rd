@@ -37,10 +37,15 @@ expanded on. Default to function(){}.}
 
 \item{actions}{Additional buttons to add to the connection pane. Defaults to NULL.}
 }
+\value{
+An `rs_contract_ide` class object
+}
 \description{
-Mirrors the RStudio IDE connection contract arguments
+Creates an object that contains all of the necessary information to create a connection
+contract. This function if meant as a lower level integration with the connections pane.
 }
 \examples{
 
 str(rscontract_ide())
+
 }

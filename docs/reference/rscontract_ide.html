@@ -36,7 +36,8 @@
 
 
 <meta property="og:title" content="Mirrors the RStudio IDE connection contract arguments — rscontract_ide" />
-<meta property="og:description" content="Mirrors the RStudio IDE connection contract arguments" />
+<meta property="og:description" content="Creates an object that contains all of the necessary information to create a connection
+contract. This function if meant as a lower level integration with the connections pane." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,7 +112,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Mirrors the RStudio IDE connection contract arguments</p>
+    <p>Creates an object that contains all of the necessary information to create a connection
+contract. This function if meant as a lower level integration with the connections pane.</p>
     </div>
 
     <pre class="usage"><span class='fu'>rscontract_ide</span>(<span class='kw'>connectionObject</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>host</span> <span class='kw'>=</span> <span class='st'>""</span>,
@@ -175,6 +177,9 @@ expanded on. Default to function().</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An `rs_contract_ide` class object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -191,12 +196,14 @@ expanded on. Default to function().</p></td>
 #&gt;  $ listObjects     :function ()  
 #&gt;  $ listColumns     :function ()  
 #&gt;  $ actions         : NULL
-#&gt;  - attr(*, "class")= chr "rscontract_ide"</div></pre>
+#&gt;  - attr(*, "class")= chr "rscontract_ide"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

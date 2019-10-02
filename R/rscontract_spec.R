@@ -18,6 +18,11 @@
 #' @examples
 #'
 #' str(rscontract_spec())
+#'
+#' @return
+#'
+#' Returns an `rscontract_spec` class object
+#'
 #' @export
 rscontract_spec <- function(
                             connection_object = NULL,

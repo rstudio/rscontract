@@ -125,6 +125,9 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An `rs_contract_ide` class object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -149,13 +152,13 @@
 #&gt; $disconnect
 #&gt; function () 
 #&gt; rscontract_close("spec_host", "spec_type")
-#&gt; &lt;environment: 0x559ee07d8b70&gt;
+#&gt; &lt;environment: 0x563a403ef858&gt;
 #&gt; 
 #&gt; $previewObject
 #&gt; function () 
 #&gt; {
 #&gt; }
-#&gt; &lt;environment: 0x559ee07da118&gt;
+#&gt; &lt;environment: 0x563a403f0d20&gt;
 #&gt; 
 #&gt; $listObjectTypes
 #&gt; function () 
@@ -163,8 +166,8 @@
 #&gt;     list(catalog = list(contains = list(schema = list(contains = list(table = list(contains = "data"), 
 #&gt;         view = list(contains = "data"))))))
 #&gt; }
-#&gt; &lt;bytecode: 0x559ee07d3c80&gt;
-#&gt; &lt;environment: 0x559ee07d4118&gt;
+#&gt; &lt;bytecode: 0x563a403ec3b8&gt;
+#&gt; &lt;environment: 0x563a403ec930&gt;
 #&gt; 
 #&gt; $listObjects
 #&gt; function (catalog = NULL, schema = NULL, spec = x, ...) 
@@ -180,8 +183,8 @@
 #&gt;     schs &lt;- get_object(ctls, "schemas", schema)
 #&gt;     return(get_object(schs, "tables")$data)
 #&gt; }
-#&gt; &lt;bytecode: 0x559ee07d1fc8&gt;
-#&gt; &lt;environment: 0x559ee07cf4a0&gt;
+#&gt; &lt;bytecode: 0x563a403eaf18&gt;
+#&gt; &lt;environment: 0x563a403e6308&gt;
 #&gt; 
 #&gt; $listColumns
 #&gt; function (catalog = NULL, schema = NULL, table = NULL, view = NULL, 
@@ -193,19 +196,21 @@
 #&gt;     tbls &lt;- get_object(schs, "tables", table_object)
 #&gt;     get_object(tbls, "fields")$data
 #&gt; }
-#&gt; &lt;bytecode: 0x559ee07d0d58&gt;
-#&gt; &lt;environment: 0x559ee07cdcf0&gt;
+#&gt; &lt;bytecode: 0x563a403e3e00&gt;
+#&gt; &lt;environment: 0x563a403e4ca8&gt;
 #&gt; 
 #&gt; $actions
 #&gt; NULL
 #&gt; 
 #&gt; attr(,"class")
-#&gt; [1] "rscontract_ide"</div></pre>
+#&gt; [1] "rscontract_ide"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
