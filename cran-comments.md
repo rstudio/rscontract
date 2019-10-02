@@ -9,5 +9,4 @@
 
 ## Resubmission
 
-* Changed licence to GPL-3
-* Quotes software names
+* Addresses recommendations from CRAN
