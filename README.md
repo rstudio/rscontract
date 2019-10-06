@@ -11,6 +11,8 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 status](https://travis-ci.org/edgararuiz/rscontract.svg?branch=master)](https://travis-ci.org/edgararuiz/rscontract)
 [![Codecov test
 coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontract?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rscontract)](https://CRAN.R-project.org/package=rscontract)
 <!-- badges: end -->
 
   - [Intro](#intro)
@@ -31,7 +33,8 @@ RStudio Connections Contract. It provides several options to describe
 the structure of your connection. One of the options provided by
 `rscontract` is to use a YAML file that can contain the structure of the
 connection, and easily convert that into a proper RStudio Connections
-contract with a couple of lines of code:
+contract with a couple of lines of
+code:
 
 <!--html_preserve-->
 
@@ -118,7 +121,8 @@ rscontract_open(spec)
 
 Notice above the values of the `type` and `host` entries inside `spec`.
 Those are the two pieces of information needed by RStudio to identify
-the connection that needs to be updated, or closed.
+the connection that needs to be updated, or
+closed.
 
 <!--html_preserve-->
 
@@ -134,7 +138,8 @@ rscontract_update("spec_host", "spec_type")
 ```
 
 After closing the connection, the content from the `connect_script`
-variable can be seen.
+variable can be
+seen.
 
 ``` r
 rscontract_close("spec_host", "spec_type")

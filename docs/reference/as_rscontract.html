@@ -152,13 +152,13 @@
 #&gt; $disconnect
 #&gt; function () 
 #&gt; rscontract_close("spec_host", "spec_type")
-#&gt; &lt;environment: 0x563a403ef858&gt;
+#&gt; &lt;environment: 0x5586282f0cc8&gt;
 #&gt; 
 #&gt; $previewObject
 #&gt; function () 
 #&gt; {
 #&gt; }
-#&gt; &lt;environment: 0x563a403f0d20&gt;
+#&gt; &lt;environment: 0x5586282ef278&gt;
 #&gt; 
 #&gt; $listObjectTypes
 #&gt; function () 
@@ -166,8 +166,8 @@
 #&gt;     list(catalog = list(contains = list(schema = list(contains = list(table = list(contains = "data"), 
 #&gt;         view = list(contains = "data"))))))
 #&gt; }
-#&gt; &lt;bytecode: 0x563a403ec3b8&gt;
-#&gt; &lt;environment: 0x563a403ec930&gt;
+#&gt; &lt;bytecode: 0x558627a8c7b0&gt;
+#&gt; &lt;environment: 0x558627a8cc48&gt;
 #&gt; 
 #&gt; $listObjects
 #&gt; function (catalog = NULL, schema = NULL, spec = x, ...) 
@@ -183,8 +183,8 @@
 #&gt;     schs &lt;- get_object(ctls, "schemas", schema)
 #&gt;     return(get_object(schs, "tables")$data)
 #&gt; }
-#&gt; &lt;bytecode: 0x563a403eaf18&gt;
-#&gt; &lt;environment: 0x563a403e6308&gt;
+#&gt; &lt;bytecode: 0x558627a88698&gt;
+#&gt; &lt;environment: 0x558627a85658&gt;
 #&gt; 
 #&gt; $listColumns
 #&gt; function (catalog = NULL, schema = NULL, table = NULL, view = NULL, 
@@ -196,8 +196,8 @@
 #&gt;     tbls &lt;- get_object(schs, "tables", table_object)
 #&gt;     get_object(tbls, "fields")$data
 #&gt; }
-#&gt; &lt;bytecode: 0x563a403e3e00&gt;
-#&gt; &lt;environment: 0x563a403e4ca8&gt;
+#&gt; &lt;bytecode: 0x558626ab46a0&gt;
+#&gt; &lt;environment: 0x558626ab2ac8&gt;
 #&gt; 
 #&gt; $actions
 #&gt; NULL
