@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rscontract</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -84,10 +84,13 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/edgararuiz/rscontract">
+  <a href="https://github.com/rstudio/rscontract">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -106,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Coerces object into an RStudio connection contract</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edgararuiz/rscontract/blob/master/R/as_rscontract.R'><code>R/as_rscontract.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscontract/blob/master/R/as_rscontract.R'><code>R/as_rscontract.R</code></a></small>
     <div class="hidden name"><code>as_rscontract.Rd</code></div>
     </div>
 
@@ -152,13 +155,13 @@
 #&gt; $disconnect
 #&gt; function () 
 #&gt; rscontract_close("spec_host", "spec_type")
-#&gt; &lt;environment: 0x5586282f0cc8&gt;
+#&gt; &lt;environment: 0x562945d54360&gt;
 #&gt; 
 #&gt; $previewObject
 #&gt; function () 
 #&gt; {
 #&gt; }
-#&gt; &lt;environment: 0x5586282ef278&gt;
+#&gt; &lt;environment: 0x562945d440e0&gt;
 #&gt; 
 #&gt; $listObjectTypes
 #&gt; function () 
@@ -166,8 +169,8 @@
 #&gt;     list(catalog = list(contains = list(schema = list(contains = list(table = list(contains = "data"), 
 #&gt;         view = list(contains = "data"))))))
 #&gt; }
-#&gt; &lt;bytecode: 0x558627a8c7b0&gt;
-#&gt; &lt;environment: 0x558627a8cc48&gt;
+#&gt; &lt;bytecode: 0x562945d3d300&gt;
+#&gt; &lt;environment: 0x562945d3d808&gt;
 #&gt; 
 #&gt; $listObjects
 #&gt; function (catalog = NULL, schema = NULL, spec = x, ...) 
@@ -183,8 +186,8 @@
 #&gt;     schs &lt;- get_object(ctls, "schemas", schema)
 #&gt;     return(get_object(schs, "tables")$data)
 #&gt; }
-#&gt; &lt;bytecode: 0x558627a88698&gt;
-#&gt; &lt;environment: 0x558627a85658&gt;
+#&gt; &lt;bytecode: 0x562945d39798&gt;
+#&gt; &lt;environment: 0x562945d36c38&gt;
 #&gt; 
 #&gt; $listColumns
 #&gt; function (catalog = NULL, schema = NULL, table = NULL, view = NULL, 
@@ -196,8 +199,8 @@
 #&gt;     tbls &lt;- get_object(schs, "tables", table_object)
 #&gt;     get_object(tbls, "fields")$data
 #&gt; }
-#&gt; &lt;bytecode: 0x558626ab46a0&gt;
-#&gt; &lt;environment: 0x558626ab2ac8&gt;
+#&gt; &lt;bytecode: 0x562945d38608&gt;
+#&gt; &lt;environment: 0x562945d35610&gt;
 #&gt; 
 #&gt; $actions
 #&gt; NULL
@@ -220,11 +223,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Edgar Ruiz.</p>
+  <p>Developed by Javier Luraschi, Edgar Ruiz.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

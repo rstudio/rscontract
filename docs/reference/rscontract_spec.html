@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rscontract</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -84,10 +84,13 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/edgararuiz/rscontract">
+  <a href="https://github.com/rstudio/rscontract">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -106,7 +109,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>A flexible API that can be converted to an RStudio Connection Contract</h1>
-    <small class="dont-index">Source: <a href='https://github.com/edgararuiz/rscontract/blob/master/R/rscontract_spec.R'><code>R/rscontract_spec.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscontract/blob/master/R/rscontract_spec.R'><code>R/rscontract_spec.R</code></a></small>
     <div class="hidden name"><code>rscontract_spec.Rd</code></div>
     </div>
 
@@ -114,13 +117,21 @@
     <p>A flexible API that can be converted to an RStudio Connection Contract</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rscontract_spec</span>(<span class='kw'>connection_object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"spec_type"</span>,
-  <span class='kw'>host</span> <span class='kw'>=</span> <span class='st'>"spec_host"</span>, <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>""</span>,
+    <pre class="usage"><span class='fu'>rscontract_spec</span>(
+  <span class='kw'>connection_object</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"spec_type"</span>,
+  <span class='kw'>host</span> <span class='kw'>=</span> <span class='st'>"spec_host"</span>,
+  <span class='kw'>icon</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>""</span>,
   <span class='kw'>connect_script</span> <span class='kw'>=</span> <span class='st'>"library(connections)\n[Place your code here]"</span>,
   <span class='kw'>disconnect_code</span> <span class='kw'>=</span> <span class='st'>"function() rscontract_close('spec_host', 'spec_type')"</span>,
-  <span class='kw'>preview_code</span> <span class='kw'>=</span> <span class='st'>"function(){}"</span>, <span class='kw'>catalog_list</span> <span class='kw'>=</span> <span class='st'>"sample_catalog()"</span>,
-  <span class='kw'>object_types</span> <span class='kw'>=</span> <span class='st'>"default_types()"</span>, <span class='kw'>object_list</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>object_columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>actions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>preview_code</span> <span class='kw'>=</span> <span class='st'>"function(){}"</span>,
+  <span class='kw'>catalog_list</span> <span class='kw'>=</span> <span class='st'>"sample_catalog()"</span>,
+  <span class='kw'>object_types</span> <span class='kw'>=</span> <span class='st'>"default_types()"</span>,
+  <span class='kw'>object_list</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>object_columns</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>actions</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -218,11 +229,11 @@ expanded on. Defaults to NULL.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Edgar Ruiz.</p>
+  <p>Developed by Javier Luraschi, Edgar Ruiz.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
