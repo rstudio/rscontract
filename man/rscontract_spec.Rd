@@ -4,13 +4,21 @@
 \alias{rscontract_spec}
 \title{A flexible API that can be converted to an RStudio Connection Contract}
 \usage{
-rscontract_spec(connection_object = NULL, type = "spec_type",
-  host = "spec_host", icon = NULL, name = "",
+rscontract_spec(
+  connection_object = NULL,
+  type = "spec_type",
+  host = "spec_host",
+  icon = NULL,
+  name = "",
   connect_script = "library(connections)\\n[Place your code here]",
   disconnect_code = "function() rscontract_close('spec_host', 'spec_type')",
-  preview_code = "function(){}", catalog_list = "sample_catalog()",
-  object_types = "default_types()", object_list = NULL,
-  object_columns = NULL, actions = NULL)
+  preview_code = "function(){}",
+  catalog_list = "sample_catalog()",
+  object_types = "default_types()",
+  object_list = NULL,
+  object_columns = NULL,
+  actions = NULL
+)
 }
 \arguments{
 \item{connection_object}{The connection object. Default to NULL.}

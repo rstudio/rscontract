@@ -4,11 +4,20 @@
 \alias{rscontract_ide}
 \title{Mirrors the RStudio IDE connection contract arguments}
 \usage{
-rscontract_ide(connectionObject = NULL, type = "", host = "",
-  icon = NULL, displayName = "", connectCode = "",
-  disconnect = function() { }, previewObject = function() { },
-  listObjectTypes = default_types(), listObjects = function() { },
-  listColumns = function() { }, actions = NULL)
+rscontract_ide(
+  connectionObject = NULL,
+  type = "",
+  host = "",
+  icon = NULL,
+  displayName = "",
+  connectCode = "",
+  disconnect = function() { },
+  previewObject = function() { },
+  listObjectTypes = default_types(),
+  listObjects = function() { },
+  listColumns = function() { },
+  actions = NULL
+)
 }
 \arguments{
 \item{connectionObject}{The connection object. Default to NULL.}
