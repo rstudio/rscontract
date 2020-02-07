@@ -8,4 +8,4 @@
 
 ## Resubmission
 
-* Addresses recommendations from CRAN
+* Makes Javier Luraschi maintainer of the package
