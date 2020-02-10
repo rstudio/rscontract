@@ -8,4 +8,4 @@
 
 ## Resubmission
 
-* Makes Javier Luraschi maintainer of the package
+* Fixes invalid URL in README
