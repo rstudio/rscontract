@@ -8,9 +8,9 @@
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
-status](https://travis-ci.org/edgararuiz/rscontract.svg?branch=master)](https://travis-ci.org/edgararuiz/rscontract)
+status](https://travis-ci.org/rstudio/rscontract.svg?branch=master)](https://travis-ci.org/rstudio/rscontract)
 [![Codecov test
-coverage](https://codecov.io/gh/edgararuiz/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/edgararuiz/rscontract?branch=master)
+coverage](https://codecov.io/gh/rstudio/rscontract/branch/master/graph/badge.svg)](https://codecov.io/gh/rstudio/rscontract?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rscontract)](https://CRAN.R-project.org/package=rscontract)
 <!-- badges: end -->
@@ -76,7 +76,7 @@ You can install the development version from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("edgararuiz/rscontract")
+remotes::install_github("rstudio/rscontract")
 ```
 
 ## Examples
