@@ -3,7 +3,7 @@ Title: Generic implementation of the 'RStudio' connections contract
 Version: 0.1.1
 Authors@R:
     c(
-        person("Javier", "Luraschi", email = "javier@rstudio.com", role = c("aut", "cre")),
+        person("Nathan", "Stephens", email = "nathan@rstudio.com", role = c("aut", "cre")),
         person("Edgar", "Ruiz", email = "edgararuiz@gmail.com", role = c("aut"))
     )
 Description: Provides a generic implementation of the 'RStudio' connection contract to 
