@@ -1,6 +1,6 @@
 Package: rscontract
 Title: Generic implementation of the 'RStudio' connections contract
-Version: 0.1.1
+Version: 0.1.2
 Authors@R:
     c(
         person("Nathan", "Stephens", email = "nathan@rstudio.com", role = c("aut", "cre")),
